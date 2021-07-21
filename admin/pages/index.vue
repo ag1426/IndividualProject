@@ -9,12 +9,14 @@
           </h1>
           <div class="a-spacing-large"></div>
           <!-- Button -->
-          <a href="#" class="a-button-buy-again">Add a new product</a>
-          <a href="#" class="a-button-history margin-right-10"
-            >Add a new category</a
+          <nuxt-link to="/products" class="a-button-buy-again"
+            >Add a new product</nuxt-link
           >
-          <a href="#" class="a-button-history margin-right-10"
-            >Add a new brand</a
+          <nuxt-link to="category" class="a-button-history margin-right-10"
+            >Add a new category</nuxt-link
+          >
+          <nuxt-link to="/brand" class="a-button-history margin-right-10"
+            >Add a new brand</nuxt-link
           >
         </div>
       </div>
@@ -23,7 +25,11 @@
     <!-- Listing page -->
     <div class="container-fluid browsing-history">
       <div class="row">
-        <div v-for="(product, index) in products" :key="product._id"  class="col-xs-2 col-lg-2 col-md-2 col-sm6 br bb">
+        <div
+          v-for="(product, index) in products"
+          :key="product._id"
+          class="col-xs-2 col-lg-2 col-md-2 col-sm6 br bb"
+        >
           <div class="history-box">
             <div class="text-center">
               <!-- Product image -->
@@ -33,38 +39,48 @@
               <!-- Product title -->
               <div class="a-spacing-top-base asin-title">
                 <span class="a-text-normal">
-                  <div class="p13n-sc-truncated">Title: {{product.title}}</div>
+                  <div class="p13n-sc-truncated">
+                    Title: {{ product.title }}
+                  </div>
                 </span>
               </div>
               <!-- Product size -->
               <div class="a-spacing-top-base asin-title">
                 <span class="a-text-normal">
-                  <div class="p13n-sc-truncated">Size: {{product.size}}</div>
+                  <div class="p13n-sc-truncated">Size: {{ product.size }}</div>
                 </span>
               </div>
               <!-- Product color -->
               <div class="a-spacing-top-base asin-title">
                 <span class="a-text-normal">
-                  <div class="p13n-sc-truncated"> Color: {{product.color}}</div>
+                  <div class="p13n-sc-truncated">
+                    Color: {{ product.color }}
+                  </div>
                 </span>
               </div>
               <!-- Product Condition -->
               <div class="a-spacing-top-base asin-title">
                 <span class="a-text-normal">
-                  <div class="p13n-sc-truncated">Condition: {{product.condition}}
+                  <div class="p13n-sc-truncated">
+                    Condition: {{ product.condition }}
                   </div>
                 </span>
               </div>
               <div class="a-row">
                 <span class="a-size-base a-color-pricce">
-                  <span class="p13n-sc-price">NPR {{product.price}}</span>
+                  <span class="p13n-sc-price">NPR {{ product.price }}</span>
                 </span>
                 <!-- Product Buttons -->
                 <div class="a-row">
-                  <a href="a-row" class="a-button-history margin-right-10"
-                    >Update</a
+                  <nuxt-link
+                    :to="`products/${product._id}`"
+                    class="a-button-history margin-right-10"
+                    >Update</nuxt-link
                   >
-                  <a href="a-row" class="a-button-history margin-left-10"
+                  <a
+                    href="#"
+                    class="a-button-history margin-right-10"
+                    @click="onDeleteProduct(product._id, index)"
                     >Delete</a
                   >
                 </div>
@@ -79,7 +95,6 @@
 
 <script>
 export default {
-
   // asyncData is fetching Data before nuxt page finished loading on the browser.
   // It is good for SEO because the data will be loaded first
   async asyncData({ $axios }) {
@@ -90,6 +105,21 @@ export default {
         products: response.products
       };
     } catch (err) {}
+  },
+  methods: {
+    async onDeleteProduct(id, index) {
+      try {
+        let response = await this.$axios.$delete(
+          `http://localhost:3000/api/products/${id}`
+        );
+        if (response.status) {
+          // remove
+          this.products.splice(index, 1);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
   }
 };
 </script>

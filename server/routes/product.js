@@ -7,6 +7,8 @@ const upload = require("../middlewares/upload-photo");
 router.post("/products", upload.single("photo"), async (req, res) => {
   try {
     let product = new Product();
+    product.categoryID = req.body.categoryID;
+    product.brandID = req.body.brandID;
     product.title = req.body.title;
     product.price = req.body.price;
     product.size = req.body.size;
