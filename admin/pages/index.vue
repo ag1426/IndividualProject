@@ -12,12 +12,6 @@
           <nuxt-link to="/products" class="a-button-buy-again"
             >Add a new product</nuxt-link
           >
-          <nuxt-link to="category" class="a-button-history margin-right-10"
-            >Add a new category</nuxt-link
-          >
-          <nuxt-link to="/brand" class="a-button-history margin-right-10"
-            >Add a new brand</nuxt-link
-          >
         </div>
       </div>
     </div>
@@ -34,8 +28,27 @@
             <div class="text-center">
               <!-- Product image -->
               <a href="#" class="a-link-normal">
-                <img :src="product.photo" class="img-fluid" />
+                <img :src="product.photo" class="productimg" />
               </a>
+
+               <!-- Product Category -->
+              <div class="a-spacing-top-base asin-title">
+                <span class="a-text-normal">
+                  <div class="p13n-sc-truncated">
+                    Category: {{ product.category }}
+                  </div>
+                </span>
+              </div>
+
+               <!-- Product brand -->s
+
+              <div class="a-spacing-top-base asin-title">
+                <span class="a-text-normal">
+                  <div class="p13n-sc-truncated">
+                    Brand: {{ product.brand }}
+                  </div>
+                </span>
+              </div>
               <!-- Product title -->
               <div class="a-spacing-top-base asin-title">
                 <span class="a-text-normal">
@@ -66,24 +79,25 @@
                   </div>
                 </span>
               </div>
+              <!-- Product Price -->
               <div class="a-row">
-                <span class="a-size-base a-color-pricce">
-                  <span class="p13n-sc-price">NPR {{ product.price }}</span>
+                <span class="a-size-base a-color-price">
+                  <span class="p13n-sc-price">Rs. {{ product.price }}</span>
                 </span>
-                <!-- Product Buttons -->
-                <div class="a-row">
-                  <nuxt-link
-                    :to="`products/${product._id}`"
-                    class="a-button-history margin-right-10"
-                    >Update</nuxt-link
-                  >
-                  <a
-                    href="#"
-                    class="a-button-history margin-right-10"
-                    @click="onDeleteProduct(product._id, index)"
-                    >Delete</a
-                  >
-                </div>
+              </div>
+              <!-- Product Buttons -->
+              <div class="a-row">
+                <nuxt-link
+                  :to="`products/${product._id}`"
+                  class="a-button-history margin-right-10"
+                  >Update</nuxt-link
+                >
+                <a
+                  href="#"
+                  class="a-button-history margin-right-10"
+                  @click="onDeleteProduct(product._id, index)"
+                  >Delete</a
+                >
               </div>
             </div>
           </div>
@@ -123,3 +137,13 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.productimg {
+  max-width:  70%;
+    height: auto;
+    object-fit: cover;
+    border: 1px;
+    border-radius: 5px;
+}
+</style>

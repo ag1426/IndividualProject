@@ -9,28 +9,14 @@
             <h2 style="text-align: center">Add a new product</h2>
             <form>
               <!--Category dropdown -->
-              <div class="a-spacing-top medium">
+              <div class="a-spacing-top-medium">
                 <label>Category</label>
-                <select class="a-select-option" v-model="categoryID">
-                  <option
-                    v-for="category in categories"
-                    :value="category._id"
-                    :key="category._id"
-                    >{{ category.type }}</option
-                  >
-                </select>
+                <input type="text" class="a-input-text" style="width: 100%" v-model="category" />
               </div>
               <!--Brand dropdown -->
-              <div class="a-spacing-top medium">
+              <div class="a-spacing-top-medium">
                 <label>Brand</label>
-                <select class="a-select-option" v-model="brandID">
-                  <option
-                    v-for="brand in brands"
-                    :value="brand._id"
-                    :key="brand._id"
-                    >{{ brand.name }}</option
-                  >
-                </select>
+                <input type="text" class="a-input-text" style="width: 100%" v-model="brand" />
               </div>
               <!-- Title input -->
               <div class="a-spacing-top-medium">
@@ -89,33 +75,12 @@
 
 <script>
 export default {
-  async asyncData({ $axios }) {
-    try {
-      let categories = $axios.$get("http://localhost:3000/api/categories");
-      let brands = $axios.$get("http://localhost:3000/api/brands");
-
-      const [catResponse, brandResponse] = await Promise.all([
-        categories,
-        brands
-      ]);
-
-      console.log(catResponse);
-
-      return {
-        categories: catResponse.categories,
-        brands: brandResponse.brands
-      };
-    } catch (err) {
-      console.log(err);
-    }
-  },
-
-  data(){
+   data(){
       return{
-          categoryID: null,
-          brandID: null,
+          category: "",
+          brand: "",
           title: "",
-          size: null,
+          size: "",
           color: "",
           condition: "",
           price: 0,
@@ -138,8 +103,8 @@ export default {
           data.append("color", this.color);
           data.append("condition", this.condition);
           data.append("price", this.price);
-          data.append("categoryID", this.categoryID);
-          data.append("brandID", this.brandID);
+          data.append("category", this.category);
+          data.append("brand", this.brand);
           data.append("photo", this.selectedFile, this.selectedFile.name);
 
 
