@@ -39,6 +39,17 @@
                 <label>Condition</label>
                 <input type="text" class="a-input-text" style="width: 100%" v-model="condition" />
               </div>
+
+               <!-- Description textarea -->
+              <div class="a-spacing-top-medium">
+                <label style="margin-bottom: 0px;">Description</label>
+                <textarea
+                  placeholder="Provide details such as a product description"
+                  style="width: 100%"
+                  v-model="description"
+                ></textarea>
+              </div>
+              
               <!-- Price input -->
               <div class="a-spacing-top-medium">
                 <label>Price</label>
@@ -83,6 +94,7 @@ export default {
           size: "",
           color: "",
           condition: "",
+          description: "",
           price: 0,
           selectedFile: null,
           fileName: ""

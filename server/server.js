@@ -34,9 +34,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // require api
 
 const productRoutes = require('./routes/product');
+const userRoutes = require("./routes/auth");
+const addressRoutes = require("./routes/address");
+const paymentRoutes = require("./routes/payment");
+const orderRoutes = require("./routes/order");
+
+
 
 
 app.use('/api', productRoutes);
+app.use('/api', userRoutes);
+app.use("/api", addressRoutes);
+app.use("/api", paymentRoutes);
+app.use("/api", orderRoutes);
+
+
 
 app.listen(3000, (err) => {
   if (err) {

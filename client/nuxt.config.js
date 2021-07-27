@@ -1,10 +1,10 @@
-const URL = 'http://localhost:3000'
-
+const URL = "http://localhost:3000";
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Bottom Drawer',
+    script: [{ src: "https://js.stripe.com/v3"}],
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -24,8 +24,13 @@ export default {
     'mdbvue/lib/css/mdb.min.css'
   ],
 
+
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
+  plugins: [{
+    src: "~/plugins/localStorage.js", ssr: false
+  }
+    
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -45,6 +50,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    "@nuxtjs/auth"
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -52,6 +58,10 @@ export default {
     proxy: true,
     baseURL: URL
   },
+
+  proxy : {
+    "/api": URL
+  }, 
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
@@ -62,5 +72,21 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            propertyName: "token"
+          },
+          logout: true
+        }
+      }
+    }
   }
-}
+};
+
+

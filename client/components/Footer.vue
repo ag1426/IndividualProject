@@ -2,7 +2,7 @@
    <v-footer
       dark
       padless
-      class="footer"
+     relative
     >
       <v-card
         class="flex"
@@ -10,6 +10,7 @@
         tile
       >
         <v-card-title class="grey darken-1 white--text text-center">
+          <nuxt-link to="/">
          <v-btn
         color="white"
         text
@@ -18,6 +19,8 @@
       >
         Home
       </v-btn>
+          </nuxt-link>
+      
        <v-btn
         color="white"
         text
@@ -36,7 +39,7 @@
       </v-btn>
   
           <v-spacer></v-spacer>
-          <a  href="https://www.instagram.com">
+          <a  href="#">
           <v-btn
             class="mx-4"
             dark
@@ -56,6 +59,7 @@
              mdi-twitter
             </v-icon>
           </v-btn>
+         <a href="https://www.instagram.com/thebottomdrawer.thrift/">
           <v-btn
             class="mx-4"
             dark
@@ -65,6 +69,7 @@
               mdi-instagram
             </v-icon>
           </v-btn>
+          </a>
         </v-card-title>
         <v-card-text class="grey darken-3 py-2 white--text text-center">
           {{ new Date().getFullYear() }} &#169; <strong>Bottom Drawer</strong>
@@ -84,6 +89,6 @@ body{
 
 }
 .footer{
-  margin-top: 5%;
+  margin-top: 20%;
 }
 </style>

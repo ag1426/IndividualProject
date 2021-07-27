@@ -14,6 +14,7 @@ router.post("/products", upload.single("photo"), async (req, res) => {
     product.size = req.body.size;
     product.color = req.body.color;
     product.condition = req.body.condition;
+    product.description = req.body.description;
     product.photo = req.file.location;
 
     await product.save();
@@ -79,6 +80,7 @@ router.put("/products/:id", upload.single("photo"), async (req, res) => {
           size: req.body.size,
           color: req.body.color,
           condition: req.body.condition,
+          description: req.body.description,
           photo: req.file.location,
         },
       },
