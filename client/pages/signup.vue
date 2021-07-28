@@ -83,7 +83,7 @@
                   </div>
                   <div class="a-alert-container">
                     <div class="a-alert-content">
-                      Password must be at least 6 characteres
+                      {{error}}
                     </div>
                   </div>
                 </div>
@@ -133,7 +133,8 @@ export default {
       fullName: "",
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      error: null
     };
   },
   methods: {
@@ -147,10 +148,11 @@ export default {
         };
 
         let response = await this.$axios.$post("/api/auth/signup", data);
-
+         
         console.log(response);
 
         if (response.success) {
+          
           this.$auth.loginWith("local", {
             data: {
               email: this.email,
@@ -159,9 +161,12 @@ export default {
           });
 
           this.$router.push("/");
+         
         }
       } catch (err) {
+        this.error = err.response.data.message;
         console.log(err);
+
       }
     }
   }
@@ -171,5 +176,8 @@ export default {
 <style scoped>
 #logoback {
   background-color: #424242;
+}
+.a-alert-content{
+  color: maroon
 }
 </style>

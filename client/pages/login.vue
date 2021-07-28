@@ -59,7 +59,7 @@
                 <div class="a-row a-spacing-extra-large mb-4">
                   <span class="a-button-primary">
                     <span class="a-button-inner">
-                      <span class="a-button-text"  @click="onLogin">Continue</span>
+                      <span class="a-button-text"  @click="onLogin">Login</span>
                     </span>
                   </span>
                   <div class="a-row a-spacing-top-medium a-size-small">
