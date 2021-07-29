@@ -127,7 +127,6 @@ export default {
    middleware: "auth",
   auth: "guest",
   layout: "none",
-
   data() {
     return {
       fullName: "",
@@ -146,11 +145,9 @@ export default {
           password: this.password,
           confirmPassword: this.confirmPassword
         };
-
         let response = await this.$axios.$post("/api/auth/signup", data);
          
         console.log(response);
-
         if (response.success) {
           
           this.$auth.loginWith("local", {
@@ -159,14 +156,12 @@ export default {
               password: this.password
             }
           });
-
           this.$router.push("/");
          
         }
       } catch (err) {
         this.error = err.response.data.message;
         console.log(err);
-
       }
     }
   }

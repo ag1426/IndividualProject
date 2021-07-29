@@ -117,7 +117,7 @@ import FeaturedImage from "~/components/FeaturedImage";
 
 export default {
   components: {
-    FeaturedImage,
+    FeaturedImage
     
   },
 

@@ -21,23 +21,10 @@
 
         <div class="row">
           <!-- Delivery -->
-          <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 pl-2">
+          <template v-if="$auth.$state.loggedIn">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 pl-2">
             <div class="nav-global-location">
-               <template v-if="$auth.$state.loggedIn">
               <nuxt-link to="/address" class="nav-a nav-a-2">
-                <div class="nav-sprite" id="nav-packard-glow-loc-icon"></div>
-                <div id="glow-ingress-block">
-                  <span class="nav-line-1" id="glow-ingress-line1" 
-                    >Deliver to</span
-                  >
-                  <span class="nav-line-2" id="glow-ingress-line2"
-                    >asdasd</span
-                  >
-                </div>
-              </nuxt-link>
-               </template>
-                <template v-else>
-              <nuxt-link to="login" class="nav-a nav-a-2">
                 <div class="nav-sprite" id="nav-packard-glow-loc-icon"></div>
                 <div id="glow-ingress-block">
                   <span class="nav-line-1" id="glow-ingress-line1" 
@@ -48,10 +35,29 @@
                   >
                 </div>
               </nuxt-link>
-               </template>
-                
             </div>
           </div>
+
+          </template>
+            <template v-else>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 pl-2">
+            <div class="nav-global-location">
+              <nuxt-link to="/login" class="nav-a nav-a-2">
+                <div class="nav-sprite" id="nav-packard-glow-loc-icon"></div>
+                <div id="glow-ingress-block">
+                  <span class="nav-line-1" id="glow-ingress-line1" 
+                    >Deliver to</span
+                  >
+                  <span class="nav-line-2" id="glow-ingress-line2"
+                    >Kathmandu</span
+                  >
+                </div>
+              </nuxt-link>
+            </div>
+          </div>
+
+          </template>
+         
           <!-- Shopping -->
           <div class="col-xl-6 col-lg-5 col-md-4 col=sm-6 pl-0">
             <div class="nav-fill">

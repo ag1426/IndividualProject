@@ -3,7 +3,7 @@ const Joi = require('@hapi/joi')
 module.exports = 
   function(req, res, next) {
     const schema = {
-      fullName: Joi.string().regex(/^[A-Za-z]+$/),
+      fullName: Joi.string(),
       email: Joi.string().email(),
       password: Joi.string().regex(
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
@@ -17,7 +17,7 @@ module.exports =
       switch (error.details[0].context.key) {
         case "fullName":
           res.status(400).send({
-            message: "You must enter your name",
+            message: "You must enter a valid name",
           });
           break;
         case "email":
@@ -27,7 +27,7 @@ module.exports =
           break;
         case "password":
           res.status(400).send({
-            message: `You need at least one uppercase, a number and a special character and your password must be 8 chracters`,
+            message: "You need at least one uppercase, a number and a special character and your password must be 8 chracters",
           });
           break;
         case "confirmPassword":
