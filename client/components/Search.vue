@@ -36,11 +36,13 @@
           autocomplete="off"
           required="required"
           class="sbx-custom__input"
+          v-model="query"
         />
         <button
           type="submit"
           title="Submit your search query."
           class="sbx-custom__submit"
+          @click="onSearch"
         >
           <svg role="img" aria-label="Search">
             <use xlink:href="#sbx-icon-search-11"></use>
@@ -59,6 +61,25 @@
     </form>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      query: ""
+    }
+  },
+
+  methods: {
+    onSearch() {
+      this.$router.push({
+        path: "/search",
+        query: { title: this.query}
+      })
+    }
+  }
+}
+</script>
 
 <style scoped>
 .center{

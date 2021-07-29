@@ -51,7 +51,7 @@
                   />
                   <div class="a-alert-container">
                     <div class="a-alert-content">
-                      Password must be at least 6 characteres
+                     {{ error }}
                     </div>
                   </div>
                 </div>
@@ -59,7 +59,7 @@
                 <div class="a-row a-spacing-extra-large mb-4">
                   <span class="a-button-primary">
                     <span class="a-button-inner">
-                      <span class="a-button-text"  @click="onLogin">Login</span>
+                      <span class="a-button-text"  @click="onLogin">Continue</span>
                     </span>
                   </span>
                   <div class="a-row a-spacing-top-medium a-size-small">
@@ -96,21 +96,32 @@ export default {
     return {
       email: "",
       password: "",
-      err: null,
+      error: null,
     };
   },
   methods: {
     async onLogin() {
-      try {
-        this.$auth.loginWith("local", {
-          data: {
-            email: this.email,
-            password: this.password,
-          },
-        });
-
-        this.$router.push("/");
+ try {
+        let data = {
+          email: this.email,
+          password: this.password
+        };
+        let response = await this.$axios.$post("/api/auth/login", data);
+         
+        console.log(response);
+        if (response.success) {
+          
+          this.$auth.loginWith("local", {
+            data: {
+              email: this.email,
+              password: this.password
+            }
+          });
+          this.$router.push("/");
+         
+        }
       } catch (err) {
+        this.error = err.response.data.message;
         console.log(err);
       }
     },
@@ -124,5 +135,9 @@ export default {
 .registerPage {
   margin-top: 6%;
 }
+.a-alert-content{
+  color: maroon;
+}
+
 </style>
 
