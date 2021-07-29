@@ -17,7 +17,11 @@
                   </div>
                 </div>
                 <!-- List of the item -->
-                <div class="sc-list-body" v-for="product in getCart" :key="product._id" >
+                <div
+                  class="sc-list-body"
+                  v-for="product in getCart"
+                  :key="product._id"
+                >
                   <div class="sc-list-item-border">
                     <div class="a-row a-spacing-top-base a-spacing-base">
                       <div class="row">
@@ -33,19 +37,30 @@
                             <a
                               href="#"
                               class="a-link-normal a-size-medium a-text-bold"
-                            >{{ product.title }}</a>
+                              >{{ product.title }}</a
+                            >
                             <!-- Product's Owner name -->
-                            <span class="a-size-base sc-product-creator">{{ product.brand }}</span>
+                            <span class="a-size-base sc-product-creator">{{
+                              product.brand
+                            }}</span>
                           </div>
                           <div>
                             <span
-                              class="a-size-small a-color-secondary sc-product-binding"
-                            >Paperback</span>
+                              class="
+                                a-size-small a-color-secondary
+                                sc-product-binding
+                              "
+                              >Paperback</span
+                            >
                           </div>
                           <div>
                             <span
-                              class="a-size-small a-color-success sc-product-availability"
-                            >In Stock</span>
+                              class="
+                                a-size-small a-color-success
+                                sc-product-availability
+                              "
+                              >In Stock</span
+                            >
                           </div>
                           <div class="sc-action-links">
                             &nbsp;&nbsp;
@@ -53,18 +68,29 @@
                             &nbsp;
                             <!-- Delete button -->
                             <span class="a-size-small">
-                              <a href="#" @click="$store.commit('removeProduct', product)">Remove</a>
+                              <a
+                                href="#"
+                                @click="$store.commit('removeProduct', product)"
+                                >Remove</a
+                              >
                             </span>
-                            &nbsp;
-                            &nbsp;
+                            &nbsp; &nbsp;
                           </div>
                         </div>
                         <div class="col-sm-2 col-2 tr sm-txt-r">
                           <!-- Product's Price -->
                           <p class="a-spacing-small">
                             <span
-                              class="a-size-medium a-color-price sc-price sc-white-space-nowrap sc-product-price sc-price-sign a-text-bold"
-                            >Rs. {{product.price}}</span>
+                              class="
+                                a-size-medium a-color-price
+                                sc-price
+                                sc-white-space-nowrap
+                                sc-product-price
+                                sc-price-sign
+                                a-text-bold
+                              "
+                              >Rs. {{ product.price }}</span
+                            >
                           </p>
                         </div>
                       </div>
@@ -76,10 +102,14 @@
                 <div class="text-right">
                   <!-- Cart Subtotal -->
                   <p class="a-spacing-none a-spacing-top-mini">
-                    <span class="a-size-medium">Subtotal ({{getCartLength}} item)</span>
+                    <span class="a-size-medium"
+                      >Subtotal ({{ getCartLength }} item)</span
+                    >
                     <span class="a-color-price a-text-bold">
                       <!-- Cart Total Price -->
-                      <span class="a-size-medium a-color-price">Rs. {{ getCartTotalPrice}}</span>
+                      <span class="a-size-medium a-color-price"
+                        >Rs. {{ getCartTotalPrice }}</span
+                      >
                     </span>
                   </p>
                 </div>
@@ -87,32 +117,55 @@
             </div>
           </div>
           <div class="col-lg-3 col-md-4 col-sm-5">
-            <div class="a-box-group" style="margin-bottom: 14px;">
+            <div class="a-box-group" style="margin-bottom: 14px">
               <div class="a-box a-color-alternate-background">
                 <div class="a-box-inner">
                   <div class="a-spacing-mini">
                     <p class="a-spacing-none a-spacing-top-none">
                       <!-- Cart Subtotal -->
                       <span class="a-size-medium">
-                        <span>Subtotal ({{getCartLength}} item):</span>
+                        <span>Subtotal ({{ getCartLength }} item):</span>
                         <span class="a-color-price a-text-bold">
                           <!-- Cart Total Price  -->
-                          <span class="a-size-medium a-color-price">Rs.{{getCartTotalPrice}}</span>
+                          <span class="a-size-medium a-color-price"
+                            >Rs.{{ getCartTotalPrice }}</span
+                          >
                         </span>
                       </span>
                     </p>
                   </div>
                   <div class="a-spacing-base mt-1">
                     <input type="checkbox" name="checkbox" />
-                    <span class="a-label a-checkbox-label">This order contains a gift</span>
+                    <span class="a-label a-checkbox-label"
+                      >This order contains a gift</span
+                    >
                   </div>
-                  <div>
-                    <span class="a-spacing-small a-button-primary a-button-icon">
-                      <span class="a-button-inner">
-                        <nuxt-link to="/placeorder" class="a-button-text">Proceed to checkout</nuxt-link>
+                  <template v-if="$auth.$state.loggedIn">
+                    <div>
+                      <span
+                        class="a-spacing-small a-button-primary a-button-icon"
+                      >
+                        <span class="a-button-inner">
+                          <nuxt-link to="/placeorder" class="a-button-text"
+                            >Proceed to checkout</nuxt-link
+                          >
+                        </span>
                       </span>
-                    </span>
-                  </div>
+                    </div>
+                  </template>
+                  <template v-else>
+                    <div>
+                      <span
+                        class="a-spacing-small a-button-primary a-button-icon"
+                      >
+                        <span class="a-button-inner">
+                          <nuxt-link to="/login" class="a-button-text"
+                            >Proceed to checkout</nuxt-link
+                          >
+                        </span>
+                      </span>
+                    </div>
+                  </template>
                 </div>
               </div>
             </div>
@@ -133,9 +186,13 @@
                               </a>
                             </div>
                             <div class="col-md-8 col-sm-9 col-9">
-                              <a href="#" class="a-link-normal">The Everything Store:…</a>
+                              <a href="#" class="a-link-normal"
+                                >The Everything Store:…</a
+                              >
                               <div class="a-size-small">
-                                <a href="#" class="a-size-small a-link-child">Brad Stone</a>
+                                <a href="#" class="a-size-small a-link-child"
+                                  >Brad Stone</a
+                                >
                               </div>
                               <div class="a-icon-row a-spacing-none">
                                 <a href="#">
@@ -148,14 +205,23 @@
                                 <a href="#">155</a>
                               </div>
                               <div class="a-size-small">
-                                <span class="a-size-small a-color-secondary">Kindle Edition</span>
+                                <span class="a-size-small a-color-secondary"
+                                  >Kindle Edition</span
+                                >
                               </div>
                               <div class="a-spacing-top-micro">
                                 <span
-                                  class="a-button-inspired a-spacing-top-none a-button-base a-button-small"
+                                  class="
+                                    a-button-inspired
+                                    a-spacing-top-none
+                                    a-button-base
+                                    a-button-small
+                                  "
                                 >
                                   <span class="a-button-inner">
-                                    <a href="#" class="a-button-text">See all buying options</a>
+                                    <a href="#" class="a-button-text"
+                                      >See all buying options</a
+                                    >
                                   </span>
                                 </span>
                               </div>
@@ -179,14 +245,13 @@
 
 <script>
 import { mapGetters } from "vuex";
-import NuxtLogo from '../../admin/components/NuxtLogo.vue';
+import NuxtLogo from "../../admin/components/NuxtLogo.vue";
 export default {
   components: { NuxtLogo },
 
   computed: {
-    ...mapGetters(["getCart", "getCartTotalPrice", "getCartLength"])
-  }
- 
+    ...mapGetters(["getCart", "getCartTotalPrice", "getCartLength"]),
+  },
 };
 </script>
 
