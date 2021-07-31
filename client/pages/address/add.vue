@@ -32,17 +32,11 @@
             </div>
             <div class="a-section">
               <h2>Add a new address</h2>
-              <div class="a-section a-spacing-none a-spacing-top-small">
-                <b>
-                  Or pick up your packages at your convenience from our self-service locations. To add an Amazon Pickup Point or Locker, click
-                  <a
-                    href="#"
-                  >here</a>.
-                </b>
-              </div>
               <!-- Error Message -->
               <div class="a-section a-spacing-none a-spacing-top-small">
-                <b></b>
+               <div class="a-alert-content">
+                      {{error}}
+                    </div>
               </div>
               <form>
                 <div class="a-spacing-medium a-spacing-top-medium">
@@ -54,15 +48,7 @@
                       class="a-input-text"
                       style="width: 100%;"
                       placeholder="Street and number, P.O. box, c/o."
-                      v-model="streetAddress1"
-                    />
-                    <!-- Street Address 2 -->
-                    <input
-                      type="text"
-                      class="a-input-text a-spacing-top-small"
-                      style="width: 100%;"
-                      placeholder="Apartment, suite, unit, building, floor, etc."
-                      v-model="streetAddress2"
+                      v-model="streetAddress"
                     />
                   </div>
                   <!-- City -->
@@ -79,7 +65,7 @@
                   <div class="a-spacing-top-medium">
                     <label style="margin-bottom: 0px;">Phone Number</label>
                     <input
-                      type="text"
+                      type="tel"
                       class="a-input-text"
                       style="width: 100%;"
                       v-model="phoneNumber"
@@ -102,12 +88,6 @@
                       v-model="deliveryInstructions"
                     ></textarea>
                   </div>
-                  <div class="a-spacing-top-medium">
-                    <label style="margin-bottom: 0px;">Weekend delivery</label>
-                    <a href="#">
-                      <i class="fas fa-angle-down"></i> Which days can you receive packages?
-                    </a>
-                  </div>
                   <div class="a-spacing-top-medium"></div>
                   <hr />
                   <div class="a-spacing-top-medium">
@@ -117,15 +97,6 @@
                   </div>
                   <div>
                     <span>If the address contains typos or other errors, your package may be undeliverable.</span>
-                  </div>
-                  <div class="a-spacing-top-small">
-                    <span>
-                      <a href="#">Tips for entering addresses</a>
-                    </span>
-                    <span>|</span>
-                    <span>
-                      <a href="#">APO/FPO address tips</a>
-                    </span>
                   </div>
                   <div class="a-spacing-top-large">
                     <span class="a-button-register">
@@ -151,12 +122,12 @@
 export default {
   data() {
     return {
-      streetAddress1: "",
-      streetAddress2: "",
+      streetAddress: "",
       city: "",
       state: "",
       phoneNumber: "",
-      deliveryInstructions: ""
+      deliveryInstructions: "",
+      error: ""
     };
   },
 
@@ -164,22 +135,30 @@ export default {
     async onAddAddress() {
       try {
         let data = {
-          streetAddress: this.streetAddress1 + " " + this.streetAddress2,
+          streetAddress: this.streetAddress,
           city: this.city,
           state: this.state,
           phoneNumber: this.phoneNumber,
-          deliverInstructions: this.deliveryInstructions
+          deliveryInstructions: this.deliveryInstructions
         };
 
-        let response = await this.$axios.$post("http://localhost:3000/api/addresses", data);
+        let response = await this.$axios.$post("/api/addresses", data);
 
         if (response.success) {
           this.$router.push("/address");
         }
       } catch (err) {
+        this.error = err.response.data.message;
         console.log(err);
       }
     }
   }
 };
 </script>
+
+<style scoped>
+
+.a-alert-content{
+  color: maroon
+}
+</style>

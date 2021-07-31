@@ -12,11 +12,7 @@
             </div>
           </v-toolbar-title>
           <!-- Search bar -->
-          <div class="col-sm-6 pt-0">
-            <Search />
-          </div>
-
-          <div class="col-sm-4"></div>
+        <div class="col-sm-4"></div>
         </div>
 
         <div class="row">
@@ -59,33 +55,43 @@
           </template>
          
           <!-- Shopping -->
-          <div class="col-xl-6 col-lg-5 col-md-4 col=sm-6 pl-0">
+          <div class="col-xl-6 col-lg-5 col-md-4 col=sm-6 pl-0" style="margin-left: -7%;">
             <div class="nav-fill">
-              <div class="nav-shop">
+              <div class="nav-shop" >
+                <template v-if="$auth.$state.loggedIn">
                 <nuxt-link
-                  to="/history"
+                  to="/Sell"
+                  class="nav-a nav-a-2 nav-single-row-link"
+                >
+                  <span class="nav-line-2" >
+                    Sell
+                  </span>
+                </nuxt-link>
+                </template>
+  
+                <template v-else>
+                <nuxt-link
+                  to="/login"
                   class="nav-a nav-a-2 nav-single-row-link"
                 >
                   <span class="nav-line-2">
-                    Browsing History
-                    <span
-                      class="nav-icon nav-arrow"
-                      style="visibility: visible"
-                    ></span>
+                    Sell
                   </span>
                 </nuxt-link>
-              </div>
-
-              <div class="nav-xshop-container">
-                <div class="nav-xshop">
-                  <nuxt-link to="/Sell" class="nav-a">Sell</nuxt-link>
-                </div>
+                </template>
+                 <div class="col-sm-6 pt-0" >
+                <Search />
               </div>
             </div>
+            
+          </div>
+          
           </div>
 
+           
+
           <!-- Accounts and order and cart -->
-          <div class="col-xl-4 col-lg-5 col-md-6 col=sm-4 pl-0">
+          <div style="margin-left: 23%; padding-top: 0.6%;">
             <div class="nav-tools">
               <a
                 href="#"
@@ -93,9 +99,9 @@
                 class="nav-a nav-a-2 icp-link-style-2"
               >
                 <span class="icp-nac-link-inner">
-                  <span class="nav-line-1">
+                  <span class="nav-line-1" >
                     <span class="icp-nav-globe-img-2"></span>
-                    <span class="icp-nav-language">EN</span>
+                    <span class="icp-nav-language" >EN</span>
                   </span>
 
                   <span class="nav-line-2">
@@ -133,15 +139,17 @@
                   </span>
                 </nuxt-link>
               </template>
+              <template v-if="$auth.$state.loggedIn">
               <nuxt-link to="/orders" class="nav-a nav-a-2 nav-single-row-link">
                 <span class="nav-line-1"></span>
                 <span class="nav-line-2">Orders</span>
               </nuxt-link>
+              </template>
 
               <nuxt-link to="/cart" class="nav-a nav-a-2" id="nav-cart">
                 <span aria-hidden="true" class="nav-line-1"></span>
                 <span aria-hidden="true" class="nav-line-2">Cart</span>
-                <span class="nav-cart-icon nav-sprite" style="margin-right: "></span>
+                <span class="nav-cart-icon nav-sprite"></span>
                 <span
                   id="nav-cart-count"
                   aria-hidden="true"

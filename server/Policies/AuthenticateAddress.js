@@ -3,36 +3,35 @@ const Joi = require('@hapi/joi')
 module.exports = 
   function(req, res, next) {
     const schema = {
-      fullName: Joi.string(),
-      email: Joi.string().email(),
-      password: Joi.string().regex(
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
-      ),
-      confirmPassword: Joi.ref("password")
+      streetAddress: Joi.string(),
+      city: Joi.string(),
+      state: Joi.string(),
+      phoneNumber: Joi.number(),
+      deliveryInstructions: Joi.string().allow('')
     };
 
     const { error } = Joi.validate(req.body, schema);
 
     if (error) {
       switch (error.details[0].context.key) {
-        case "fullName":
+        case "streetAddress":
           res.status(400).send({
-            message: "You must enter a valid name",
+            message: "You must enter a street name",
           });
           break;
-        case "email":
+        case "city":
           res.status(400).send({
-            message: "You must provide a valid email address",
+            message: "You must enter a city name",
           });
           break;
-        case "password":
+        case "state":
           res.status(400).send({
-            message: "You need at least one uppercase, a number and a special character and your password must be 8 chracters",
+            message: "You must enter a state name",
           });
           break;
-        case "confirmPassword":
+        case "phoneNumber":
           res.status(400).send({
-            message: "Your passwords donot match.",
+            message: "YOu must enter a phone number",
           });
           break;
         default:

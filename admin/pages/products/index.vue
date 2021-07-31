@@ -114,6 +114,7 @@ export default {
           data.append("size", this.size);
           data.append("color", this.color);
           data.append("condition", this.condition);
+          data.append("description", this.description);
           data.append("price", this.price);
           data.append("category", this.category);
           data.append("brand", this.brand);

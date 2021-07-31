@@ -66,6 +66,7 @@
                   />
                   <!-- Confirm Password-->
                   <div class="a-row a-spacing-base">
+                    <div class="a-row a-spacing-base"></div>
                     <label  class="a-form-label"
                       >Confirm password</label
                     >
@@ -91,8 +92,8 @@
                 <div class="a-row a-spacing-extra-large mb-4">
                   <span class="a-button-primary" style="background-color: #F27D42;">
                     <span class="a-button-inner">
-                      <span class="a-button-text" @click="onSignup"
-                        >Create your account</span
+                      <v-btn class="a-button-text" @click="onSignup"
+                        >Create your account</v-btn
                       >
                     </span>
                   </span>

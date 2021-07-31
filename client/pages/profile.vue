@@ -8,27 +8,6 @@
           <h2>Profile Page</h2>
           <a href="#" @click="onLogout">Logout</a>
           <form>
-            <!-- Name -->
-            <div class="a-spacing-top-medium">
-              <label>Name</label>
-              <input
-                class="a-input-text"
-                style="width: 100%"
-                v-model="name"
-                :placeholder="$auth.$state.user.fullName"
-              />
-            </div>
-
-            <!-- Email -->
-            <div class="a-spacing-top-medium">
-              <label>Email</label>
-              <input
-                class="a-input-text"
-                style="width: 100%"
-                v-model="email"
-                :placeholder="$auth.$state.user.email"
-              />
-            </div>
 
             <!-- Password -->
             <div class="a-spacing-top-medium">
@@ -37,10 +16,11 @@
             </div>
 
              <div class="a-spacing-top-medium">
-              <label>Confirm password</label>
+              <label>Confirm Password</label>
               <input class="a-input-text" type="password" style="width: 100%" v-model="confirmPassword" />
             </div>
 
+            {{error}}
             <!-- Button -->
             <hr />
             <div class="a-spacing-top-large">
@@ -63,18 +43,16 @@
 export default {
   data() {
     return {
-      name: "",
-      email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      error: null
     };
   },
 
   methods: {
     async onUpdateProfile() {
       let data = {
-        name: this.name,
-        email: this.email,
+        fullName: this.fullName,
         password: this.password,
         confirmPassword: this.confirmPassword
       };
@@ -82,14 +60,12 @@ export default {
         let response = await this.$axios.$put("/api/auth/user", data);
 
         if (response.success) {
-          this.fullName = "";
-          this.email = "";
           this.password = "";
-          this.confirmPassowrd = "";
 
           await this.$auth.fetchUser();
         }
       } catch (err) {
+        this.error = err.response.data.message;
         console.log(err);
       }
     },

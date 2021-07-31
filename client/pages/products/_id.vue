@@ -97,6 +97,7 @@
               <div class="productDescription">
                 <div class="productDescriptionInner">{{ product.condition }}</div>
               </div>
+
             </div>
           </div>
           <!-- Last 3 grid Buying section -->
@@ -107,7 +108,7 @@
                   <div class="clearfix">
                     <div class="float-left">
                       <form>
-                        <nuxt-link to="/placeorder">
+                        <nuxt-link to="/cart">
                         <input type="radio" id="test1" name="radio-group checked" />
                         <label for="test1">Buy Now</label>
                         </nuxt-link>
@@ -137,7 +138,7 @@
                 </div>
 
                 <div class="a-section">
-                  <div class="a-button-stack" @click="addProductToCart(product)">
+                  <button class="a-button-stack" style="width:100%;" v-if="product.prodquantity > 0" @click="addProductToCart(product)">
                     <span class="a-spacing-small a-button-primary a-button-icon">
                       <span class="a-button-inner">
                         <i class="a-icon a-icon-cart"></i>
@@ -145,8 +146,17 @@
                         <span class="a-button-text">Add to Cart</span>
                       </span>
                     </span>
-                  </div>
-                  <nuxt-link to="/placeorder">
+                  </button>
+                  <button class="a-button-stack" style="width:100%;" v-else disabled>
+                    <span class="a-spacing-small a-button-primary a-button-icon">
+                      <span class="a-button-inner">
+                        <i class="a-icon a-icon-cart"></i>
+                        <input type="submit" name="submit.add-to-cart" class="a-button-input" />
+                        <span class="a-button-text">Add to Cart</span>
+                      </span>
+                    </span>
+                  </button>
+                  <nuxt-link to="/cart">
                   <div class="a-button-stack">
                     <span class="a-spacing-small a-button-primary a-button-icon">
                       <span class="a-button-inner">

@@ -1,6 +1,7 @@
 <template>
   <!--MAIN-->
   <main>
+    <Navbar />
     <!--YOUR ORDER-->
     <div class="container-fluid your-order">
       <div class="row">
@@ -123,9 +124,6 @@
                       <span class="a-size-mini a-color-price">Rs. {{ product.productID.price }}</span>
                     </div>
                     <br />
-                    <div class="a-row">
-                      <span class="a-button-view-item">View your item</span>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -135,7 +133,9 @@
         <div class="col-xl-2 col-lg-1 col-md-12"></div>
       </div>
     </div>
-    <!--/YOUR ORDER-->
+     <div class="footer">
+      <Footer />
+    </div>
   </main>
   <!--/MAIN-->
 </template>
@@ -143,6 +143,8 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+
+layout: "none",
 
   async asyncData({ $axios }){
     try{
@@ -168,3 +170,8 @@ export default {
 }
 </script>
 
+<style scoped>
+.footer{
+   margin-top: 18%;
+ }
+</style>

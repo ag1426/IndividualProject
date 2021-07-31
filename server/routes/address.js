@@ -3,9 +3,10 @@ const Address = require("../models/address");
 const User = require("../models/user");
 const verifyToken = require("../middlewares/verify-token");
 const axios = require("axios");
+const AuthenticateAddress = require("../Policies/AuthenticateAddress")
 
 /* POST API - Create an address */
-router.post("/addresses", verifyToken, async (req, res) => {
+router.post("/addresses", AuthenticateAddress, verifyToken, async (req, res) => {
   try {
     let address = new Address();
     address.user = req.decoded._id;

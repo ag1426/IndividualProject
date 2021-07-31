@@ -83,8 +83,7 @@ export default {
 
 <style scoped>
 .center{
-  margin-top: 5%;
-  margin-left: 40%;
+  margin-left: 100%;
   
 }
 </style>

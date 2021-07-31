@@ -117,7 +117,6 @@ export default {
         });
 
         if (response.success) {
-          // Do something like redirecting to the home page
           this.message = response.message;
           this.$store.commit("clearCart");
           this.$router.push("/");

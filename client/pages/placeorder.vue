@@ -86,34 +86,6 @@
                       <span>Same as shipping address</span>
                     </div>
                   </div>
-                  <div class="col-xl-4 col-lg-6 col-sm-12 col-12">
-                    <div class="a-spacing-base">
-                      <div class="a-spacing-mini">
-                        <span>
-                          <strong>Gift cards &amp; promotional codes</strong>
-                        </span>
-                      </div>
-                      <div class="row">
-                        <div
-                          class="col-xl-8 col-lg-7 col-md-7 col-sm-7 col-8 pr-0"
-                        >
-                          <input
-                            type="text"
-                            autocomplete="off"
-                            class="a-input-text"
-                            placeholder="Enter Code"
-                          />
-                        </div>
-                        <div class="col-xl-4 col-lg-5 col-md-5 col-sm-5 col-4">
-                          <span class="a-buton-apply-code">
-                            <span class="a-button-inner">
-                              <span class="a-button-text">Apply</span>
-                            </span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -218,7 +190,7 @@
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-lg-4 col-md-3 col-sm-12 pl-0">
+          <div style="margin-top" class="col-xl-3 col-lg-4 col-md-3 col-sm-12 pl-0">
             <div class="a-box-group">
               <div class="a-box a-first">
                 <div class="a-box-inner">
@@ -258,14 +230,8 @@
                       </div>
                       <!-- Total Price with Shipping -->
                       <div class="row">
-                        <div class="col-sm-6">Total Before Tax:</div>
+                        <div class="col-sm-6">Total :</div>
                         <div class="col-sm-6 text-right">Rs. {{ getCartTotalPriceWithShipping }}</div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-6">
-                          Estimated tax to be collected:
-                        </div>
-                        <div class="col-sm-6 text-right">USD 0.00</div>
                       </div>
                       <hr />
                       <div class="row">

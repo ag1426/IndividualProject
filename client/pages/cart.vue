@@ -146,7 +146,7 @@
                         class="a-spacing-small a-button-primary a-button-icon"
                       >
                         <span class="a-button-inner">
-                          <nuxt-link to="/placeorder" class="a-button-text"
+                          <nuxt-link  to="/placeorder" class="a-button-text"
                             >Proceed to checkout</nuxt-link
                           >
                         </span>
@@ -166,71 +166,6 @@
                       </span>
                     </div>
                   </template>
-                </div>
-              </div>
-            </div>
-
-            <!-- Recently Viewed -->
-            <div class="a-spacing-large">
-              <div class="a-box">
-                <div class="a-box-inner">
-                  <h5 class="a-spacing-base">Your recently viewed items</h5>
-                  <div class="a-spacing-micro">
-                    <ul class="a-unordered-list recently-viewed">
-                      <li class="a-spacing-medium" v-for="i in 4" :key="i">
-                        <span class="a-list-item">
-                          <div class="row">
-                            <div class="col-md-4 col-sm-3 col-3 pl-0">
-                              <a href="#">
-                                <img src="img/cartRecent4.png" class />
-                              </a>
-                            </div>
-                            <div class="col-md-8 col-sm-9 col-9">
-                              <a href="#" class="a-link-normal"
-                                >The Everything Store:…</a
-                              >
-                              <div class="a-size-small">
-                                <a href="#" class="a-size-small a-link-child"
-                                  >Brad Stone</a
-                                >
-                              </div>
-                              <div class="a-icon-row a-spacing-none">
-                                <a href="#">
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star-half-alt"></i>
-                                </a>
-                                <a href="#">155</a>
-                              </div>
-                              <div class="a-size-small">
-                                <span class="a-size-small a-color-secondary"
-                                  >Kindle Edition</span
-                                >
-                              </div>
-                              <div class="a-spacing-top-micro">
-                                <span
-                                  class="
-                                    a-button-inspired
-                                    a-spacing-top-none
-                                    a-button-base
-                                    a-button-small
-                                  "
-                                >
-                                  <span class="a-button-inner">
-                                    <a href="#" class="a-button-text"
-                                      >See all buying options</a
-                                    >
-                                  </span>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
                 </div>
               </div>
             </div>

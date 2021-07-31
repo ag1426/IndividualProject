@@ -11,7 +11,9 @@ const ProductSchema = new Schema({
     color: String,
     condition: String,
     description: String,
-    photo: String
+    photo: String,
+    prodquantity: {type: Number, default: 1},
+    addedProducts: {type: Number, default: 0}
 
 });
 

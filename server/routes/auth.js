@@ -50,7 +50,30 @@ router.get("/auth/user", verifyToken, async (req, res) => {
     });
   }
 });
+/* Update a profile */
+router.put("/auth/user",AuthenticationControllerPolicy, verifyToken, async (req, res) => {
+  try {
+    let foundUser = await User.findOne({ _id: req.decoded._id });
 
+    if (foundUser) {
+      if (req.body.fullName) foundUser.fullName = req.body.fullName;
+      if (req.body.email) foundUser.email = req.body.email;
+      if (req.body.password) foundUser.password = req.body.password;
+
+      await foundUser.save();
+
+      res.json({
+        success: true,
+        message: "Successfully updated"
+      });
+    }
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message
+    });
+  }
+});
 /*Login Route */
 
 router.post("/auth/login", async (req, res) => {
