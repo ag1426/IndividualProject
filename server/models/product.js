@@ -3,8 +3,6 @@ const mongooseAlgolia = require("mongoose-algolia");
 const Schema = mongoose.Schema;
 
 const ProductSchema = new Schema({
-    category: String,
-    brand: String,
     title: String,
     price: Number,
     size: String,
@@ -12,6 +10,8 @@ const ProductSchema = new Schema({
     condition: String,
     description: String,
     photo: String,
+    category: String,
+    brand: String,
     prodquantity: {type: Number, default: 1},
     addedProducts: {type: Number, default: 0}
 
@@ -22,7 +22,7 @@ ProductSchema.plugin(mongooseAlgolia, {
     apiKey: process.env.ALGOLIA_SECRET,
     indexName: process.env.ALGOLIA_INDEX,
   
-    selector: "-_id title brand price size color price condition description photo category",
+    selector: "title _id photo condition price brand category",
     debug: true
   });
   

@@ -28,8 +28,8 @@ mongoose.connect(
 // Middleware
 app.use(cors());
 app.use(morgan("dev"));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // require api
 

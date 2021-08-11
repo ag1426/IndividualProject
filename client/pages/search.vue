@@ -5,25 +5,16 @@
         <div class="col-xl-2 col-lg-3 nd-4 col-sm-4">
           <!-- Sidebar -->
         </div>
-
         <div class="col-xl-10 col-lg-9 md-8 col-sm-8">
           <div class="mainResults">
             <ul class="s-result-list">
-              <li
-                class="s-result-item celwidget"
-                style="margin-top: 5%"
-                v-for="product in products"
-                :key="product._id"
-              >
+              <li class="s-result-item celwidget" style="margin-top: 5%;" v-for="product in products" :key="product._id">
                 <div class="s-item-container">
                   <div>
                     <div class="row">
                       <!-- Image -->
                       <div class="col-sm-3 text-center">
-                        <nuxt-link
-                          :to="`/products/${product._id}`"
-                          class="a-link-normal"
-                        >
+                        <nuxt-link :to="`/products/${product._id}`" class="a-link-normal">
                           <img
                             :src="product.photo"
                             style="width: 150px"

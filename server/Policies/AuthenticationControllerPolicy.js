@@ -32,7 +32,7 @@ module.exports =
           break;
         case "confirmPassword":
           res.status(400).send({
-            message: "Your passwords donot match.",
+            message: "Your passwords do not match.",
           });
           break;
         default:

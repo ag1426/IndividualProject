@@ -2,8 +2,6 @@ const URL = "http://localhost:3000";
 
 
 export default {
-
-  mode: "universal",
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Bottom Drawer',
@@ -31,7 +29,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [{
-    src: "~/plugins/localStorage.js", ssr: false
+    src: "~/plugins/localStorage.js", ssr: false,
   }
     
   ],
@@ -85,7 +83,8 @@ export default {
           login: {
             propertyName: "token"
           },
-          logout: true
+          logout: true,
+          //user: { method: 'get', propertyName: false } 
         }
       }
     }

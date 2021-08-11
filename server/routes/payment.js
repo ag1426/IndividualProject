@@ -42,7 +42,7 @@ router.post("/payment", verifyToken, (req, res) => {
     })
     .then(customer => {
       return stripe.customers.createSource(customer.id, {
-        source: "tok_ae"
+        source: "tok_visa"
       });
     })
     .then(source => {

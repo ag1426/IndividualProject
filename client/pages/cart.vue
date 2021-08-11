@@ -1,6 +1,8 @@
 <template>
   <!--MAIN-->
   <main>
+
+    <Navbar/>
     <!--SHOPPING CART-->
     <div class="shopping-cart mt-3">
       <div class="container-fluid c-section">
@@ -44,28 +46,36 @@
                               product.brand
                             }}</span>
                           </div>
-                          <div>
+                          <div style="padding-top: 1%;">
                             <span
                               class="
                                 a-size-small a-color-secondary
                                 sc-product-binding
                               "
-                              >Paperback</span
+                              >Size: {{product.size}}</span
                             >
                           </div>
-                          <div>
+                          <div style="padding-top: 1%;">
                             <span
                               class="
-                                a-size-small a-color-success
+                                a-size-small
                                 sc-product-availability
+                              
                               "
-                              >In Stock</span
+                              >Color: {{product.color}}</span
                             >
                           </div>
-                          <div class="sc-action-links">
-                            &nbsp;&nbsp;
-                            <span>|</span>
-                            &nbsp;
+                           <div style="padding-top: 1%;">
+                            <span
+                              class="
+                                a-size-small
+                                sc-product-availability
+                              
+                              "
+                              >Condition: {{product.condition}}</span
+                            >
+                          </div>
+                          <div class="sc-action-links" style="padding-top: 2%;">
                             <!-- Delete button -->
                             <span class="a-size-small">
                               <a
@@ -173,6 +183,9 @@
         </div>
       </div>
     </div>
+     <div class="footer">
+      <Footer />
+    </div>
     <!--/SHOPPING CART-->
   </main>
   <!--/MAIN-->
@@ -182,6 +195,7 @@
 import { mapGetters } from "vuex";
 import NuxtLogo from "../../admin/components/NuxtLogo.vue";
 export default {
+  layout: "none",
   components: { NuxtLogo },
 
   computed: {
@@ -189,4 +203,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.footer{
+   margin-top: 18%;
+ }
+</style>
 

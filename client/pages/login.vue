@@ -118,6 +118,7 @@ export default {
             }
           });
           this.$router.push("/");
+          alert("You have sucess logged in.")
          
         }
       } catch (err) {

@@ -95,7 +95,7 @@
               </div>
               <!-- Description -->
               <div class="productDescription">
-                <div class="productDescriptionInner">{{ product.condition }}</div>
+                <div class="productDescriptionInner">Condition : {{ product.condition }}</div>
               </div>
 
             </div>
@@ -132,7 +132,8 @@
                 </div>
                 <div class="a-section a-spacing-small">
                   <div class="a-section a-spacing-none">
-                    <span class="a-size-medium a-color-success">In Stock</span>
+                    <span class="a-size-medium a-color-success" v-if="product.prodquantity > 0">In Stock</span>
+                    <span class="a-size-medium a-color-success" v-else>Out of Stock</span>
                   </div>
                   <div class="a-section a-spacing-mini">Ships from and sold by Bottomdrawer.com</div>
                 </div>

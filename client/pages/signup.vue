@@ -92,8 +92,8 @@
                 <div class="a-row a-spacing-extra-large mb-4">
                   <span class="a-button-primary" style="background-color: #F27D42;">
                     <span class="a-button-inner">
-                      <v-btn class="a-button-text" @click="onSignup"
-                        >Create your account</v-btn
+                      <span class="a-button-text" @click="onSignup"
+                        >Create your account</span
                       >
                     </span>
                   </span>
@@ -158,6 +158,7 @@ export default {
             }
           });
           this.$router.push("/");
+          alert("You have sucessfully signed up.")
          
         }
       } catch (err) {

@@ -53,11 +53,6 @@
                   </div>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
-                  <div class="a-row">
-                    <span class="a-size-mini a-color-secondary">TOTAL</span>
-                    <br />
-                    <span class="a-size-base a-text-bold a-color-secondary">Rs.{{ getCartTotalPriceWithShipping }}</span>
-                  </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-3">
                   <div class="a-row">

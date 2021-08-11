@@ -15,6 +15,10 @@
         <div class="col-sm-4"></div>
         </div>
 
+         <div class="col-sm-6 pt-0" >
+                <Search />
+              </div>
+
         <div class="row">
           <!-- Delivery -->
           <template v-if="$auth.$state.loggedIn">
@@ -79,9 +83,7 @@
                   </span>
                 </nuxt-link>
                 </template>
-                 <div class="col-sm-6 pt-0" >
-                <Search />
-              </div>
+                
             </div>
             
           </div>

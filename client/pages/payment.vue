@@ -1,13 +1,14 @@
 <template>
   <!--MAIN-->
   <main>
+    <Navbar/>
     <!--Payment -->
     <div class="registerAddress mt-3">
       <div class="container-fluid c-section">
         <div class="row">
           <div class="col-sm-3"></div>
           <div class="col-sm-6">
-            <div class="a-section a-spacing-medium">
+            <div class="a-section a-spacing-medium" style="marging-top: 5%;">
               <!-- Breadcrumbs -->
               <div class="a-subheader a-breadcrumb a-spacing-small">
                 <ul>
@@ -77,6 +78,9 @@
         </div>
       </div>
     </div>
+     <div class="footer">
+      <Footer />
+    </div>
     <!--/Payment ADDRESS-->
   </main>
   <!--/MAIN-->
@@ -85,6 +89,7 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  layout: "none",
   data() {
     return {
       message: "",
@@ -159,4 +164,7 @@ export default {
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
 }
+.footer{
+   margin-top: 18%;
+ }
 </style>
